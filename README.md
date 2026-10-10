@@ -1,21 +1,21 @@
-# TeknoParrotUI
+# TeknoParrotUI-H2O
 
-Open Source JVS / Other I/O emulator for Windows. Works in collaboration with [TeknoParrot](https://teknoparrot.com) and [OpenParrot](https://github.com/teknogods/OpenParrot).
+Open Source JVS / Other I/O emulator for Windows. Works with [OpenParrot-H2O](https://github.com/ProjectH2O/OpenParrot) and [H2ODashboard](https://github.com/ProjectH2O/H2ODashboard).
 
-[TeknoParrot Discord](https://discord.gg/kmWgGDe), development discussion is in the ``#openparrot-dev`` channel.
+This is a component of [Project H2O](https://github.com/ProjectH2O/ProjectH2O), not intended for standalone use. Please see the Project H2O page for details.
 
-## Dependencies
+### Changes
 
-[discord-rpc-win](https://github.com/discordapp/discord-rpc/releases/download/v3.4.0/discord-rpc-win.zip)
-
-Extract ``discord-rpc.dll`` (``win32-dynamic\bin\discord-rpc.dll``) into TeknoParrotUI's bin folder
-
-## Notes for contributors
-
-When adding a new GameProfile, create a description file and fill in as much details as possible
-
-If possible, also add the game's icon to the [Icons](https://github.com/teknogods/TeknoParrotUIThumbnails/tree/master/Icons) repository.
-
-When updating a GameProfile, increment the ``GameProfileRevision``.
-
-Do not commit any GameProfile/Descriptions changes to the ``TeknoParrotUi.Common.csproj`` file. The files will be added automatically when the project is reloaded.
+- Supports H2Overdrive only
+- No internet access: removed updater, TeknoParrot Online, Patreon, Discord Rich Presence, icon downloads, mods menu
+- H2Overdrive-specific settings:
+  - Display mode: Borderless, Windowed or Fullscreen
+  - Resolution (0 = desktop)
+  - 60 FPS limit and VSync off
+  - Network adapter choice for LAN play
+  - Force End Race key
+  - Debug Log
+- Library cleanup: removed the "More info" button and the Test Menu switch, which H2Overdrive can't use
+- Links point to ProjectH2O
+- New defaults: dark mode on, exit confirmation off, holiday themes off
+- .NET Framework 4.8 instead of 4.6.1, and Score Submission removed (both from the [Project Asakura fork](https://github.com/ProjectAsakura/TeknoParrotUI))
