@@ -34,12 +34,6 @@
         <Viewbox Stretch="UniformToFill"  Margin="10,4,358,4" Grid.RowSpan="2">
             <Label Content="{x:Static p:Resources.GameList}" Margin="10,7,392,2" RenderTransformOrigin="0.704,1.118" FontFamily="Roboto" FontSize="18" Grid.Row="1"/>
         </Viewbox>
-        <Viewbox Margin="2,5,161,5" Grid.Column="1" Grid.Row="1">
-            <TextBlock x:Name="textBlockPatron" Margin="91,8,0,7" TextWrapping="Wrap" Text="No" FontSize="22" RenderTransformOrigin="0.519,0.818" HorizontalAlignment="Left" Width="45"/>
-        </Viewbox>
-        <Viewbox Margin="10,3,187,4" Grid.Row="1" Grid.Column="1">
-            <TextBlock HorizontalAlignment="Left" Margin="10,8,0,7" TextWrapping="Wrap" Text="Patron: " Width="91" FontSize="22" />
-        </Viewbox>
         <ScrollViewer Grid.Row="3" Grid.Column="1" Margin="10,0">
             <TextBlock x:Name="gameInfoText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{x:Static p:Resources.LibraryNoInfo}" Width="256" TextAlignment="Center" FontSize="14" Grid.Column="1" Grid.Row="3"/>
         </ScrollViewer>

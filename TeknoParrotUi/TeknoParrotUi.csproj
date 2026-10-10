@@ -262,9 +262,6 @@
     <Compile Include="Views\Library.xaml.cs">
       <DependentUpon>Library.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Patreon.xaml.cs">
-      <DependentUpon>Patreon.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\VerifyGame.xaml.cs">
       <DependentUpon>VerifyGame.xaml</DependentUpon>
     </Compile>
@@ -335,10 +332,6 @@
     <Page Include="Views\Library.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Patreon.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\VerifyGame.xaml">
       <SubType>Designer</SubType>

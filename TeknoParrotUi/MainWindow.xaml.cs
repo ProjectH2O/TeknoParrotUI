@@ -27,7 +27,6 @@ namespace TeknoParrotUi
     {
         private readonly About _about = new About();
         private readonly Library _library;
-        private readonly Patreon _patron = new Patreon();
         private readonly AddGame _addGame;
         private bool _showingDialog;
         private bool _allowClose;
@@ -86,7 +85,6 @@ namespace TeknoParrotUi
         /// <param name="e"></param>
         private void BtnLibrary(object sender, RoutedEventArgs e)
         {
-            _library.UpdatePatronText();
             contentControl.Content = _library;
         }
 
@@ -115,10 +113,13 @@ namespace TeknoParrotUi
 
         StackPanel ConfirmExit()
         {
+            var foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Lazydata.ParrotData.UiDarkMode ? "#FFFFFF" : "#303030"));
+            var background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Lazydata.ParrotData.UiDarkMode ? "#303030" : "#FFFFFF"));
+
             var txt1 = new TextBlock
             {
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(App.IsPatreon() ? (Lazydata.ParrotData.UiDarkMode ? "#FFFFFF" : "#303030") : "#303030")),
+                Foreground = foreground,
                 Margin = new Thickness(4),
                 TextWrapping = TextWrapping.WrapWithOverflow,
                 FontSize = 18,
@@ -129,7 +130,7 @@ namespace TeknoParrotUi
             dck.Children.Add(new Button()
             {
                 Style = Application.Current.FindResource("MaterialDesignFlatButton") as Style,
-                Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(App.IsPatreon() ? (Lazydata.ParrotData.UiDarkMode ? "#FFFFFF" : "#303030") : "#303030")),
+                Foreground = foreground,
                 Width = 115,
                 Height = 30,
                 Margin = new Thickness(5),
@@ -140,7 +141,7 @@ namespace TeknoParrotUi
             dck.Children.Add(new Button()
             {
                 Style = Application.Current.FindResource("MaterialDesignFlatButton") as Style,
-                Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(App.IsPatreon() ? (Lazydata.ParrotData.UiDarkMode ? "#FFFFFF" : "#303030") : "#303030")),
+                Foreground = foreground,
                 Width = 115,
                 Height = 30,
                 Margin = new Thickness(5),
@@ -152,7 +153,7 @@ namespace TeknoParrotUi
             var stk = new StackPanel
             {
                 Width = 250,
-                Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(App.IsPatreon() ? (Lazydata.ParrotData.UiDarkMode ? "#303030" : "#FFFFFF") : "#FFFFFF"))
+                Background = background
             };
             stk.Children.Add(txt1);
             stk.Children.Add(dck);
@@ -370,16 +371,6 @@ namespace TeknoParrotUi
         private void BtnAddGame(object sender, RoutedEventArgs e)
         {
             contentControl.Content = _addGame;
-        }
-
-        /// <summary>
-        /// Loads the patreon screen
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnPatreon(object sender, RoutedEventArgs e)
-        {
-            contentControl.Content = _patron;
         }
 
         private void ColorZone_MouseDown(object sender, MouseButtonEventArgs e)

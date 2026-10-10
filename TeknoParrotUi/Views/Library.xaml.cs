@@ -33,17 +33,6 @@ namespace TeknoParrotUi.Views
         private ContentControl _contentControl;
         public bool listRefreshNeeded = false;
 
-        public void UpdatePatronText()
-        {
-            using (var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\TeknoGods\TeknoParrot"))
-            {
-                var isPatron = key != null && key.GetValue("PatreonSerialKey") != null;
-
-                if (isPatron)
-                    textBlockPatron.Text = "Yes";
-            }
-        }
-
         public Library(ContentControl contentControl)
         {
             InitializeComponent();
@@ -52,8 +41,6 @@ namespace TeknoParrotUi.Views
                 UriKind.Absolute));
 
             gameIcon.Source = imageBitmap;
-
-            UpdatePatronText();
 
             _contentControl = contentControl;
             Joystick =  new JoystickControl(contentControl, this);

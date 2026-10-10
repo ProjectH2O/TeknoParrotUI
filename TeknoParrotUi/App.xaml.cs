@@ -118,26 +118,20 @@ namespace TeknoParrotUi
 
         public static void LoadTheme(string colourname, bool darkmode, bool holiday)
         {
-            // if user isn't patreon, use defaults
-            if (!IsPatreon())
+            if (holiday)
             {
-                colourname = "lightblue";
+                var now = DateTime.Now;
 
-                if (holiday)
+                if (now.Month == 10 && now.Day == 31)
                 {
-                    var now = DateTime.Now;
+                    // halloween - orange title
+                    colourname = "orange";
+                }
 
-                    if (now.Month == 10 && now.Day == 31)
-                    {
-                        // halloween - orange title
-                        colourname = "orange";
-                    }
-
-                    if (now.Month == 12 && now.Day == 25)
-                    {
-                        // christmas - red title
-                        colourname = "red";
-                    } 
+                if (now.Month == 12 && now.Day == 25)
+                {
+                    // christmas - red title
+                    colourname = "red";
                 }
             }
 
@@ -149,12 +143,6 @@ namespace TeknoParrotUi
             {
                 ph.ReplacePrimaryColor(colour);
             }     
-        }
-
-        public static bool IsPatreon()
-        {
-            var tp = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"SOFTWARE\TeknoGods\TeknoParrot");
-            return (tp != null && tp.GetValue("PatreonSerialKey") != null);
         }
 
         private void Application_Startup(object sender, StartupEventArgs e)

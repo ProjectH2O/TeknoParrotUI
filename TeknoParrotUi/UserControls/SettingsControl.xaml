@@ -34,7 +34,7 @@
                     <CheckBox Name="ChkUiDarkMode" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsUIDarkMode}" Checked="ChkTheme_Checked" Unchecked="ChkTheme_Checked"/>
                     <CheckBox Name="ChkUiHolidayThemes" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsUIHolidayThemes}" Checked="ChkTheme_Checked" Unchecked="ChkTheme_Checked"/>
                     <Separator/>
-                    <StackPanel Name="UiPatreon">
+                    <StackPanel>
                         <Label Content="{x:Static p:Resources.SettingsUICustomization}" HorizontalAlignment="Center" FontSize="30"/>
                         <Label Content="{x:Static p:Resources.SettingsUIColour}" HorizontalAlignment="Center" FontSize="15"/>
                         <ComboBox Name="UiColour" HorizontalAlignment="Center" SelectionChanged="UiColour_SelectionChanged"/>

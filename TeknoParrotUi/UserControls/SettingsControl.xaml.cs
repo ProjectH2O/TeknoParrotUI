@@ -47,15 +47,6 @@ namespace TeknoParrotUi.UserControls
             ChkUiDarkMode.IsChecked = Lazydata.ParrotData.UiDarkMode;
             ChkUiHolidayThemes.IsChecked = Lazydata.ParrotData.UiHolidayThemes;
 
-            if (App.IsPatreon())
-            {
-                UiPatreon.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                UiPatreon.Visibility = Visibility.Collapsed;
-            }
-
             _contentControl = control;
             _library = library;
         }

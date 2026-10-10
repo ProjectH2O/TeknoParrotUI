@@ -48,16 +48,6 @@ namespace TeknoParrotUi.Views
         }
 
         /// <summary>
-        /// When clicked, this will open the link to the patreon page for Teknogods
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PackIcon_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
-        {
-            Process.Start("https://www.patreon.com/Teknogods");
-        }
-
-        /// <summary>
         /// When clicked, this will open the link to the github page for teknogods
         /// </summary>
         /// <param name="sender"></param>
