@@ -9,7 +9,7 @@
   <TestMenuExtraParameters/>
   <IconName>Icons\H2Overdrive.png</IconName>
   <EmulationProfile>RawThrillsFNFH2O</EmulationProfile>
-  <GameProfileRevision>23</GameProfileRevision>
+  <GameProfileRevision>24</GameProfileRevision>
   <HasSeparateTestMode>false</HasSeparateTestMode>
   <EmulatorType>OpenParrot</EmulatorType>
   <ExecutableName>sdaemon.exe</ExecutableName>
@@ -63,6 +63,13 @@
       <FieldType>Text</FieldType>
       <Hint>Key that ends the current race by running the timer down to zero (virtual-key code, like the Exit/Pause keys: 0x7B = F12, 0x7A = F11). Leave empty to turn it off.</Hint>
       <FieldOptions />
+    </FieldInformation>
+    <FieldInformation>
+      <CategoryName>General</CategoryName>
+      <FieldName>Debug Log</FieldName>
+      <FieldValue>0</FieldValue>
+      <FieldType>Bool</FieldType>
+      <Hint>Write OpenParrotH2O.log next to the game exe (display, resolution patch, hooks, network, FPS every 5 s). Turn on only when troubleshooting.</Hint>
     </FieldInformation>
     <FieldInformation>
       <CategoryName>General</CategoryName>
