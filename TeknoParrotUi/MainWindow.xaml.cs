@@ -30,11 +30,8 @@ namespace TeknoParrotUi
         private readonly Library _library;
         private readonly Patreon _patron = new Patreon();
         private readonly AddGame _addGame;
-        private UpdaterDialog _updater;
         private bool _showingDialog;
         private bool _allowClose;
-        public bool _updaterComplete = false;
-        public List<GitHubUpdates> updates = new List<GitHubUpdates>();
 
         public MainWindow()
         {
@@ -351,190 +348,13 @@ namespace TeknoParrotUi
             }
         };
 
-        async Task<GithubRelease> GetGithubRelease(UpdaterComponent component)
-        {
-            using (var client = new HttpClient())
-            {
-#if DEBUG
-                //https://github.com/settings/applications/new GET ONE HERE
-                //MAKE SURE YOU DO NOT COMMIT THIS TOKEN IF YOU ADD IT! ONLY USE FOR DEVELOPMENT THEN REMOVE!
-                //(bypasses retarded rate limit)            
-                string secret = string.Empty; //?client_id=CLIENT_ID_HERE&client_secret=CLIENT_SECRET_HERE"
-#else
-                string secret = string.Empty;
-#endif
-                //Github's API requires a user agent header, it'll 403 without it
-                client.DefaultRequestHeaders.Add("User-Agent", "TeknoParrot");
-                var reponame = !string.IsNullOrEmpty(component.reponame) ? component.reponame : component.name;
-                var url = $"https://api.github.com/repos/{(!string.IsNullOrEmpty(component.userName) ? component.userName : "teknogods")}/{reponame}/releases/tags/{component.name}{secret}";
-                Debug.WriteLine($"Updater url for {component.name}: {url}");
-                var response = await client.GetAsync(url);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var release = await response.Content.ReadAsAsync<GithubRelease>();
-                    return release;
-                }
-                else
-                {
-                    // Handle github exceptions nicely
-                    string message = "Unkown exception";
-                    string mediaType = response.Content.Headers.ContentType.MediaType;
-                    string body = await response.Content.ReadAsStringAsync();
-                    HttpStatusCode statusCode = response.StatusCode;
-
-                    if (statusCode == HttpStatusCode.NotFound)
-                    {
-                        message = "Not found!";
-                    }
-                    else if (mediaType == "text/html")
-                    {
-                        message = body.Trim();
-                    }
-                    else if (mediaType == "application/json")
-                    {
-                        var json = JObject.Parse(body);
-                        message = json["message"]?.ToString();
-
-                        if (message.Contains("API rate limit exceeded"))
-                            message = "Update limit exceeded, try again in an hour!";
-                    }
-
-                    throw new Exception(message);
-                }
-            }
-        }
-
-        public int GetVersionNumber(string version)
-        {
-            var split = version.Split('.');
-            if (split.Length != 4 || string.IsNullOrEmpty(split[3]) || !int.TryParse(split[3], out var ver))
-            {
-                Debug.WriteLine($"{version} is formatted incorrectly!");
-                return 0;
-            }
-            return ver;
-        }
-
-        private async Task CheckGithub(UpdaterComponent component)
-        {
-            try
-            {
-                var githubRelease = await GetGithubRelease(component);
-                if (githubRelease != null && githubRelease.assets != null && githubRelease.assets.Count != 0)
-                {
-                    var localVersionString = component.localVersion;
-                    var onlineVersionString = githubRelease.name;
-                    // fix for weird things like OpenParrotx64_1.0.0.30
-                    if (onlineVersionString.Contains(component.name))
-                    {
-                        onlineVersionString = onlineVersionString.Split('_')[1];
-                    }
-
-                    bool needsUpdate = false;
-                    // component not installed.
-                    if (localVersionString == Properties.Resources.UpdaterNotInstalled)
-                    {
-                        needsUpdate = true;
-                    }
-                    else
-                    {
-                        switch (localVersionString)
-                        {
-                            // version number is weird / unable to be formatted
-                            case "unknown":
-                                Debug.WriteLine($"{component.name} version is weird! local: {localVersionString} | online: {onlineVersionString}");
-                                needsUpdate = localVersionString != onlineVersionString;
-                                break;
-                            default:
-                                int localNumber = GetVersionNumber(localVersionString);
-                                int onlineNumber = GetVersionNumber(onlineVersionString);
-
-                                needsUpdate = localNumber < onlineNumber;
-                                break;
-                        }
-                    }
-
-                    Debug.WriteLine($"{component.name} - local: {localVersionString} | online: {onlineVersionString} | needs update? {needsUpdate}");
-
-                    if (needsUpdate)
-                    {
-                       var gh = new GitHubUpdates(component, githubRelease, localVersionString, onlineVersionString);
-                       if (!updates.Exists(x => x._componentUpdated.name == gh._componentUpdated.name))
-                       {
-                           updates.Add(gh);
-                       }
-                    }
-                }
-                else
-                {
-                    Debug.WriteLine($"release is null? component: {component.name}");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public async void checkForUpdates(bool secondTime)
-        {
-            bool exception = false;
-
-            if (secondTime)
-            {
-                foreach (UpdaterComponent com in components)
-                {
-                    com._localVersion = null;
-                }
-
-                secondTime = false;
-            }
-            if (Lazydata.ParrotData.CheckForUpdates)
-            {
-                Application.Current.Windows.OfType<MainWindow>().Single().ShowMessage("Checking for updates...");
-                foreach (UpdaterComponent component in components)
-                {
-                    try
-                    {
-                        await CheckGithub(component);
-                    }
-                    catch (Exception ex)
-                    {
-                        exception = true;
-                        Application.Current.Windows.OfType<MainWindow>().Single().ShowMessage($"Error checking for updates for {component.name}:\n{ex.Message}");
-                    }
-                }
-            }
-            if (updates.Count > 0)
-            {
-                Application.Current.Windows.OfType<MainWindow>().Single().ShowMessage("Updates are available!\nSelect \"Install Updates\" from the menu on the left hand side!");
-                _updater = new UpdaterDialog(updates, contentControl, _library);
-                updateButton.Visibility = Visibility.Visible;
-
-
-            }
-            else if (!exception)
-            {
-                Application.Current.Windows.OfType<MainWindow>().Single().ShowMessage("No updates found.");
-                updateButton.Visibility = Visibility.Hidden;
-            }
-        }
-
         /// <summary>
-        /// When the window is loaded, the update checker is run and DiscordRPC is set
+        /// When the window is loaded, DiscordRPC is set
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //CHECK IF I LEFT DEBUG SET WRONG!!
-#if DEBUG
-            //checkForUpdates(false);
-#elif !DEBUG
-            checkForUpdates(false);
-#endif
-
             if (Lazydata.ParrotData.UseDiscordRPC)
                 DiscordRPC.UpdatePresence(new DiscordRPC.RichPresence
                 {
@@ -582,11 +402,6 @@ namespace TeknoParrotUi
         private void BtnMinimize(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
-        }
-        
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            contentControl.Content = _updater;
         }
 
         private void BtnDebug(object sender, RoutedEventArgs e)

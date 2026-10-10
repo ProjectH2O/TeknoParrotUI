@@ -27,7 +27,6 @@
                 <StackPanel Width="600">
                     <CheckBox Name="ChkSaveLastPlayed" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsLoadLastPlayed}"/>
                     <CheckBox Name="ChkUseDiscordRPC" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsShowGameOnDiscord}"/>
-                    <CheckBox Name="ChkCheckForUpdates" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsCheckForUpdates}"/>
                     <CheckBox Name="ChkSilentMode" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsHideConsoleWindows}"/>
                     <CheckBox Name="ChkConfirmExit" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsConfirmExit}"/>
                     <CheckBox Name="ChkDownloadIcons" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsDownloadIcon}"/>

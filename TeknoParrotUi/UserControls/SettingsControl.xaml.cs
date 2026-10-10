@@ -32,7 +32,6 @@ namespace TeknoParrotUi.UserControls
             ChkSaveLastPlayed.IsChecked = Lazydata.ParrotData.SaveLastPlayed;
             ChkUseDiscordRPC.IsChecked = Lazydata.ParrotData.UseDiscordRPC;
             ChkConfirmExit.IsChecked = Lazydata.ParrotData.ConfirmExit;
-            ChkCheckForUpdates.IsChecked = Lazydata.ParrotData.CheckForUpdates;
             ChkDownloadIcons.IsChecked = Lazydata.ParrotData.DownloadIcons;
             ChkSilentMode.IsChecked = Lazydata.ParrotData.SilentMode;
             ChkUiDisableHardwareAcceleration.IsChecked = Lazydata.ParrotData.UiDisableHardwareAcceleration;
@@ -105,7 +104,6 @@ namespace TeknoParrotUi.UserControls
                 Lazydata.ParrotData.PauseGameKey = textBoxPauseGameKey.Text;
                 Lazydata.ParrotData.SaveLastPlayed = ChkSaveLastPlayed.IsChecked.Value;
                 Lazydata.ParrotData.UseDiscordRPC = ChkUseDiscordRPC.IsChecked.Value;
-                Lazydata.ParrotData.CheckForUpdates = ChkCheckForUpdates.IsChecked.Value;
                 Lazydata.ParrotData.SilentMode = ChkSilentMode.IsChecked.Value;
                 Lazydata.ParrotData.ConfirmExit = ChkConfirmExit.IsChecked.Value;
                 Lazydata.ParrotData.DownloadIcons = ChkDownloadIcons.IsChecked.Value;

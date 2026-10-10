@@ -263,9 +263,6 @@
     <Compile Include="Views\GameRunning.xaml.cs">
       <DependentUpon>GameRunning.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GitHubUpdates.xaml.cs">
-      <DependentUpon>GitHubUpdates.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Library.xaml.cs">
       <DependentUpon>Library.xaml</DependentUpon>
     </Compile>
@@ -277,9 +274,6 @@
     </Compile>
     <Compile Include="Views\TPOnlineCreate.xaml.cs">
       <DependentUpon>TPOnlineCreate.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UpdaterDialog.xaml.cs">
-      <DependentUpon>UpdaterDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VerifyGame.xaml.cs">
       <DependentUpon>VerifyGame.xaml</DependentUpon>
@@ -348,10 +342,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GitHubUpdates.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Library.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -365,10 +355,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TPOnlineCreate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\UpdaterDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

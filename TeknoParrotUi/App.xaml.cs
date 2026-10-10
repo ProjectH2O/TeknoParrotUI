@@ -209,21 +209,6 @@ namespace TeknoParrotUi
                 return;
             }
 
-            // updater cleanup
-            var bakfiles = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.bak", SearchOption.AllDirectories);
-            foreach (var file in bakfiles)
-            {
-                try
-                {
-                    Debug.WriteLine($"Deleting old updater file {file}");
-                    File.Delete(file);
-                }
-                catch
-                {
-                    // ignore..
-                }
-            }
-
             // old description file cleanup
             var olddescriptions = Directory.GetFiles("Descriptions", "*.xml");
             foreach (var file in olddescriptions)
