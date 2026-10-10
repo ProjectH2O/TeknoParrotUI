@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -29,6 +32,32 @@ namespace TeknoParrotUi.UserControls
         private InputApi _inputApi = InputApi.DirectInput;
         private bool SubmissionNameBad;
 
+        /// <summary>
+        /// "Network Adapter" dropdowns list this PC's IPv4 adapters, refreshed every time the page opens.
+        /// Values are "Automatic" or "&lt;ip&gt; - &lt;adapter&gt;"; OpenParrot reads the leading IP.
+        /// </summary>
+        private static void FillNetworkAdapterOptions(List<FieldInformation> fields)
+        {
+            foreach (var field in fields.Where(f => f.FieldName == "Network Adapter" && f.FieldType == FieldType.Dropdown))
+            {
+                var options = new List<string> { "Automatic" };
+                foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    if (nic.OperationalStatus != OperationalStatus.Up || nic.NetworkInterfaceType == NetworkInterfaceType.Loopback)
+                        continue;
+                    foreach (var address in nic.GetIPProperties().UnicastAddresses)
+                        if (address.Address.AddressFamily == AddressFamily.InterNetwork)
+                            options.Add($"{address.Address} - {nic.Name} ({nic.Description})");
+                }
+                // Keep a saved choice even if that adapter isn't connected right now
+                if (string.IsNullOrEmpty(field.FieldValue))
+                    field.FieldValue = "Automatic";
+                else if (!options.Contains(field.FieldValue))
+                    options.Add(field.FieldValue);
+                field.FieldOptions = options;
+            }
+        }
+
         public void LoadNewSettings(GameProfile gameProfile, ListBoxItem comboItem, ContentControl contentControl, Library library)
         {
             _gameProfile = gameProfile;
@@ -37,6 +66,7 @@ namespace TeknoParrotUi.UserControls
             GamePathBox.Text = _gameProfile.GamePath;
             GamePathBox2.Text = _gameProfile.GamePath2;
 
+            FillNetworkAdapterOptions(gameProfile.ConfigValues);
             GameSettingsList.ItemsSource = gameProfile.ConfigValues;
             _contentControl = contentControl;
             _library = library;

@@ -9,16 +9,60 @@
   <TestMenuExtraParameters/>
   <IconName>Icons\H2Overdrive.png</IconName>
   <EmulationProfile>RawThrillsFNFH2O</EmulationProfile>
-  <GameProfileRevision>17</GameProfileRevision>
+  <GameProfileRevision>23</GameProfileRevision>
   <HasSeparateTestMode>false</HasSeparateTestMode>
   <EmulatorType>OpenParrot</EmulatorType>
   <ExecutableName>sdaemon.exe</ExecutableName>
   <ConfigValues>
     <FieldInformation>
       <CategoryName>General</CategoryName>
-      <FieldName>Windowed</FieldName>
+      <FieldName>DisplayMode</FieldName>
+      <FieldValue>Borderless</FieldValue>
+      <FieldType>Dropdown</FieldType>
+      <FieldOptions>
+        <string>Borderless</string>
+        <string>Windowed</string>
+        <string>Fullscreen</string>
+      </FieldOptions>
+      <Hint>Borderless: full screen without exclusive mode. Windowed: a window sized to the resolution. Fullscreen: exclusive fullscreen.</Hint>
+    </FieldInformation>
+    <FieldInformation>
+      <CategoryName>General</CategoryName>
+      <FieldName>ResolutionWidth</FieldName>
       <FieldValue>0</FieldValue>
+      <FieldType>Text</FieldType>
+      <Hint>Render width. 0 = desktop resolution. 1360 x 768 = original arcade resolution. No need for the resolution patcher.</Hint>
+      <FieldOptions />
+    </FieldInformation>
+    <FieldInformation>
+      <CategoryName>General</CategoryName>
+      <FieldName>ResolutionHeight</FieldName>
+      <FieldValue>0</FieldValue>
+      <FieldType>Text</FieldType>
+      <Hint>Render height. 0 = desktop resolution.</Hint>
+      <FieldOptions />
+    </FieldInformation>
+    <FieldInformation>
+      <CategoryName>General</CategoryName>
+      <FieldName>FpsLimitEnable</FieldName>
+      <FieldValue>1</FieldValue>
       <FieldType>Bool</FieldType>
+      <Hint>Limit the frame rate to 60 FPS, the speed the game was designed for (replaces RTSS)</Hint>
+    </FieldInformation>
+    <FieldInformation>
+      <CategoryName>General</CategoryName>
+      <FieldName>DisableVSync</FieldName>
+      <FieldValue>1</FieldValue>
+      <FieldType>Bool</FieldType>
+      <Hint>Turn off the game's vsync (recommended with the FPS limit, and for windowed/borderless or non-60 Hz monitors). Untick only for fullscreen on a 60 Hz monitor.</Hint>
+    </FieldInformation>
+    <FieldInformation>
+      <CategoryName>General</CategoryName>
+      <FieldName>Force End Race Key</FieldName>
+      <FieldValue>0x7B</FieldValue>
+      <FieldType>Text</FieldType>
+      <Hint>Key that ends the current race by running the timer down to zero (virtual-key code, like the Exit/Pause keys: 0x7B = F12, 0x7A = F11). Leave empty to turn it off.</Hint>
+      <FieldOptions />
     </FieldInformation>
     <FieldInformation>
       <CategoryName>General</CategoryName>
@@ -65,6 +109,16 @@
       <FieldName>Enable</FieldName>
       <FieldValue>0</FieldValue>
       <FieldType>Bool</FieldType>
+    </FieldInformation>
+    <FieldInformation>
+      <CategoryName>Network</CategoryName>
+      <FieldName>Network Adapter</FieldName>
+      <FieldValue>Automatic</FieldValue>
+      <FieldType>Dropdown</FieldType>
+      <FieldOptions>
+        <string>Automatic</string>
+      </FieldOptions>
+      <Hint>The network the cabinets are on (usually your LAN, e.g. 192.168.x.x). Automatic lets Windows pick, which can be a VPN or virtual adapter. Each PC's last IP number must be in the Cabinet IP list below.</Hint>
     </FieldInformation>
     <FieldInformation>
       <CategoryName>Network</CategoryName>

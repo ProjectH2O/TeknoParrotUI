@@ -98,7 +98,14 @@
                                     <ToolTip Style="{StaticResource teknoHint}"></ToolTip>
                                 </ComboBox.ToolTip>
                             </ComboBox>
-                            <Slider Margin="0,0,0,5" Minimum="{Binding FieldMin, Mode=TwoWay}" Maximum="{Binding FieldMax, Mode=TwoWay}" Value="{Binding FieldValue, Mode=TwoWay}" Visibility="{Binding Path=FieldType, Converter={StaticResource gameSettingsVisibilityConverter}, ConverterParameter=SliderField}" TickPlacement="BottomRight" AutoToolTipPlacement="TopLeft" SmallChange="1" IsSnapToTickEnabled="True"/>
+                            <DockPanel Margin="0,0,0,5" Visibility="{Binding Path=FieldType, Converter={StaticResource gameSettingsVisibilityConverter}, ConverterParameter=SliderField}">
+                                <TextBlock DockPanel.Dock="Right" Width="40" TextAlignment="Right" VerticalAlignment="Center" Text="{Binding ElementName=FieldSlider, Path=Value, StringFormat={}{0:0}}"/>
+                                <Slider x:Name="FieldSlider" Margin="0,0,10,0" VerticalAlignment="Center" Minimum="{Binding FieldMin, Mode=TwoWay}" Maximum="{Binding FieldMax, Mode=TwoWay}" Value="{Binding FieldValue, Mode=TwoWay}" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True">
+                                    <Slider.ToolTip>
+                                        <ToolTip Style="{StaticResource teknoHint}"></ToolTip>
+                                    </Slider.ToolTip>
+                                </Slider>
+                            </DockPanel>
                         </UniformGrid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
