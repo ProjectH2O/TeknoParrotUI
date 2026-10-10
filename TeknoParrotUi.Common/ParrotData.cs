@@ -17,7 +17,6 @@ namespace TeknoParrotUi.Common
 
         public bool SaveLastPlayed { get; set; }
         
-        public bool UseDiscordRPC { get; set; }
         public bool SilentMode { get; set; }
 
         public bool ConfirmExit { get; set; } = false;

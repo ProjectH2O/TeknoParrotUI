@@ -89,13 +89,10 @@ namespace TeknoParrotUi
         }
 
         /// <summary>
-        /// Shuts down the Discord integration then quits the program, terminating any threads that may still be running.
+        /// Quits the program, terminating any threads that may still be running.
         /// </summary>
         public static void SafeExit()
         {
-            if (Lazydata.ParrotData.UseDiscordRPC)
-                DiscordRPC.Shutdown();
-
             Environment.Exit(0);
         }
 
@@ -347,21 +344,6 @@ namespace TeknoParrotUi
                 folderOverride = "ElfLdr2"            
             }
         };
-
-        /// <summary>
-        /// When the window is loaded, DiscordRPC is set
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (Lazydata.ParrotData.UseDiscordRPC)
-                DiscordRPC.UpdatePresence(new DiscordRPC.RichPresence
-                {
-                    details = "Main Menu",
-                    largeImageKey = "teknoparrot",
-                });
-        }
 
         /// <summary>
         /// Loads the AddGame screen

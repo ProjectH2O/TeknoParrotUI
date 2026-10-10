@@ -30,7 +30,6 @@ namespace TeknoParrotUi.UserControls
             ChkUseSto0ZCheckBox.IsChecked = Lazydata.ParrotData.UseSto0ZDrivingHack;
             sTo0zZonePercent.Value = Lazydata.ParrotData.StoozPercent;
             ChkSaveLastPlayed.IsChecked = Lazydata.ParrotData.SaveLastPlayed;
-            ChkUseDiscordRPC.IsChecked = Lazydata.ParrotData.UseDiscordRPC;
             ChkConfirmExit.IsChecked = Lazydata.ParrotData.ConfirmExit;
             ChkDownloadIcons.IsChecked = Lazydata.ParrotData.DownloadIcons;
             ChkSilentMode.IsChecked = Lazydata.ParrotData.SilentMode;
@@ -94,7 +93,6 @@ namespace TeknoParrotUi.UserControls
                 Lazydata.ParrotData.ExitGameKey = textBoxExitGameKey.Text;
                 Lazydata.ParrotData.PauseGameKey = textBoxPauseGameKey.Text;
                 Lazydata.ParrotData.SaveLastPlayed = ChkSaveLastPlayed.IsChecked.Value;
-                Lazydata.ParrotData.UseDiscordRPC = ChkUseDiscordRPC.IsChecked.Value;
                 Lazydata.ParrotData.SilentMode = ChkSilentMode.IsChecked.Value;
                 Lazydata.ParrotData.ConfirmExit = ChkConfirmExit.IsChecked.Value;
                 Lazydata.ParrotData.DownloadIcons = ChkDownloadIcons.IsChecked.Value;
@@ -103,8 +101,6 @@ namespace TeknoParrotUi.UserControls
                 Lazydata.ParrotData.UiColour = UiColour.SelectedItem.ToString();
                 Lazydata.ParrotData.UiDarkMode = ChkUiDarkMode.IsChecked.Value;
                 Lazydata.ParrotData.UiHolidayThemes = ChkUiHolidayThemes.IsChecked.Value;
-
-                DiscordRPC.StartOrShutdown();
 
                 JoystickHelper.Serialize();
 

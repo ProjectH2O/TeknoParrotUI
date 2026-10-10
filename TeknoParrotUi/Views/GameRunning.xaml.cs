@@ -583,17 +583,6 @@ namespace TeknoParrotUi.Views
             _diThread?.Abort(0);
             _diThread = CreateInputListenerThread();
 
-            if (Lazydata.ParrotData.UseDiscordRPC)
-            {
-                DiscordRPC.UpdatePresence(new DiscordRPC.RichPresence
-                {
-                    details = _gameProfile.GameName,
-                    largeImageKey = _gameProfile.GameName.Replace(" ", "").ToLower(),
-                    //https://stackoverflow.com/a/17632585
-                    startTimestamp = (long)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds
-                });
-            }
-
             // Wait before launching second thread.
             if (!_runEmuOnly)
             {
@@ -1344,7 +1333,6 @@ namespace TeknoParrotUi.Views
 
         public void GameRunning_OnUnloaded(object sender, RoutedEventArgs e)
         {
-            if (Lazydata.ParrotData.UseDiscordRPC) DiscordRPC.UpdatePresence(null);
 #if DEBUG
             jvsDebug?.Close();
 #endif

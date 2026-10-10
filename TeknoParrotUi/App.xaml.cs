@@ -262,8 +262,6 @@ namespace TeknoParrotUi
                     return;
                 }
             }
-            DiscordRPC.StartOrShutdown();
-
             StartApp();
         }
 
