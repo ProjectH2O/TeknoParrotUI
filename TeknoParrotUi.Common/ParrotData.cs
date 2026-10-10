@@ -20,7 +20,6 @@ namespace TeknoParrotUi.Common
         public bool SilentMode { get; set; }
 
         public bool ConfirmExit { get; set; } = false;
-        public bool DownloadIcons { get; set; } = true;
         public bool UiDisableHardwareAcceleration { get; set; } = false;
 
         public string UiColour { get; set; } = "lightblue";

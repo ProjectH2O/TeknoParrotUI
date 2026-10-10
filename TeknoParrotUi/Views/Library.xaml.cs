@@ -59,48 +59,10 @@ namespace TeknoParrotUi.Views
             return bs;
         }
 
-        private static bool DownloadFile(string urlAddress, string filePath)
-        {
-            if (File.Exists(filePath)) return true;
-            Debug.WriteLine($"Downloading {filePath} from {urlAddress}");
-            try
-            {
-                var request = (HttpWebRequest)WebRequest.Create(urlAddress);
-                request.Timeout = 5000;
-                request.Proxy = null;
-
-                using (var response = request.GetResponse().GetResponseStream())
-                using (var file = File.Open(filePath, FileMode.OpenOrCreate, FileAccess.Write))
-                {
-                    response.CopyTo(file);
-                    return true;
-                }
-            }
-            catch (WebException wx)
-            {
-                var error = wx.Response as HttpWebResponse;
-                if (error != null && error.StatusCode == HttpStatusCode.NotFound)
-                {
-                    Debug.WriteLine($"File at {urlAddress} is missing!");
-                }
-                // ignore
-            }
-            catch (Exception e)
-            {
-                // ignore
-            }
-
-            return false;
-        }
-
         public static void UpdateIcon(string iconName, ref Image gameIcon)
         {
             var iconPath = Path.Combine("Icons", iconName);
-            bool success = Lazydata.ParrotData.DownloadIcons ? DownloadFile(
-                    "https://raw.githubusercontent.com/teknogods/TeknoParrotUIThumbnails/master/Icons/" +
-                    iconName, iconPath) : true;
-
-            if (success && File.Exists(iconPath))
+            if (File.Exists(iconPath))
             {
                 try
                 {
@@ -621,62 +583,6 @@ namespace TeknoParrotUi.Views
             var url = "https://teknogods.github.io/" + path;
             Debug.WriteLine($"opening {url}");
             Process.Start(url);
-        }
-
-        private void BtnDownloadMissingIcons(object sender, RoutedEventArgs e)
-        {
-            if (MessageBoxHelper.WarningYesNo(Properties.Resources.LibraryDownloadAllIcons))
-            {
-                try
-                {
-                    var icons = new DownloadWindow("https://github.com/teknogods/TeknoParrotUIThumbnails/archive/master.zip", "TeknoParrot Icons", true);
-                    icons.Closed += (x, x2) =>
-                    {
-                        if (icons.data == null)
-                            return;
-                        using (var memoryStream = new MemoryStream(icons.data))
-                        using (var zip = new ZipArchive(memoryStream, ZipArchiveMode.Read))
-                        {
-                            foreach (var entry in zip.Entries)
-                            {
-                                //remove TeknoParrotUIThumbnails-master/
-                                var name = entry.FullName.Substring(entry.FullName.IndexOf('/') + 1);
-                                if (string.IsNullOrEmpty(name)) continue;
-
-                                if (File.Exists(name))
-                                {
-                                    Debug.WriteLine($"Skipping already existing icon {name}");
-                                    continue;
-                                }
-
-                                // skip readme and folder entries
-                                if (name == "README.md" || name.EndsWith("/"))
-                                    continue;
-
-                                Debug.WriteLine($"Extracting {name}");
-
-                                try
-                                {
-                                    using (var entryStream = entry.Open())
-                                    using (var dll = File.Create(name))
-                                    {
-                                        entryStream.CopyTo(dll);
-                                    }
-                                }
-                                catch
-                                {
-                                    // ignore..?
-                                }
-                            }
-                        }
-                    };
-                    icons.Show();
-                }
-                catch
-                {
-                    // ignored
-                }
-            }
         }
     }
 }

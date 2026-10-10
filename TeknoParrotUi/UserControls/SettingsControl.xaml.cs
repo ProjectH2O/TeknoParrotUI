@@ -31,7 +31,6 @@ namespace TeknoParrotUi.UserControls
             sTo0zZonePercent.Value = Lazydata.ParrotData.StoozPercent;
             ChkSaveLastPlayed.IsChecked = Lazydata.ParrotData.SaveLastPlayed;
             ChkConfirmExit.IsChecked = Lazydata.ParrotData.ConfirmExit;
-            ChkDownloadIcons.IsChecked = Lazydata.ParrotData.DownloadIcons;
             ChkSilentMode.IsChecked = Lazydata.ParrotData.SilentMode;
             ChkUiDisableHardwareAcceleration.IsChecked = Lazydata.ParrotData.UiDisableHardwareAcceleration;
             ChkFullAxisGas.IsChecked = Lazydata.ParrotData.FullAxisGas;
@@ -95,7 +94,6 @@ namespace TeknoParrotUi.UserControls
                 Lazydata.ParrotData.SaveLastPlayed = ChkSaveLastPlayed.IsChecked.Value;
                 Lazydata.ParrotData.SilentMode = ChkSilentMode.IsChecked.Value;
                 Lazydata.ParrotData.ConfirmExit = ChkConfirmExit.IsChecked.Value;
-                Lazydata.ParrotData.DownloadIcons = ChkDownloadIcons.IsChecked.Value;
                 Lazydata.ParrotData.UiDisableHardwareAcceleration = ChkUiDisableHardwareAcceleration.IsChecked.Value;
                 
                 Lazydata.ParrotData.UiColour = UiColour.SelectedItem.ToString();

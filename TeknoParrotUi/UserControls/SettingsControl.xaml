@@ -28,7 +28,6 @@
                     <CheckBox Name="ChkSaveLastPlayed" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsLoadLastPlayed}"/>
                     <CheckBox Name="ChkSilentMode" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsHideConsoleWindows}"/>
                     <CheckBox Name="ChkConfirmExit" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsConfirmExit}"/>
-                    <CheckBox Name="ChkDownloadIcons" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsDownloadIcon}"/>
                     <CheckBox Name="ChkUiDisableHardwareAcceleration" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsHardwareAccel}"/>
                     <CheckBox Name="ChkUiDarkMode" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsUIDarkMode}" Checked="ChkTheme_Checked" Unchecked="ChkTheme_Checked"/>
                     <CheckBox Name="ChkUiHolidayThemes" HorizontalAlignment="Center" Content="{x:Static p:Resources.SettingsUIHolidayThemes}" Checked="ChkTheme_Checked" Unchecked="ChkTheme_Checked"/>
