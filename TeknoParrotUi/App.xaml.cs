@@ -154,7 +154,7 @@ namespace TeknoParrotUi
                 // give us the exception in english
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
                 var exceptiontext = (ex.ExceptionObject as Exception).ToString();
-                MessageBoxHelper.ErrorOK($"TeknoParrotUI ran into an exception!\nPlease send exception.txt to the #teknoparrothelp channel on Discord or create a Github issue!\n{exceptiontext}");
+                MessageBoxHelper.ErrorOK($"TeknoParrotUI ran into an exception!\nPlease create an issue at https://github.com/ProjectH2O/TeknoParrotUI/issues and attach exception.txt!\n{exceptiontext}");
                 File.WriteAllText("exception.txt", exceptiontext);
                 Environment.Exit(1);
             });

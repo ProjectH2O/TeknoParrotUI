@@ -564,25 +564,5 @@ namespace TeknoParrotUi.Views
                     new VerifyGame(selectedGame.GamePath, selectedGame.ValidMd5);
             }
         }
-
-        private void BtnMoreInfo(object sender, RoutedEventArgs e)
-        {
-            string path = string.Empty;
-
-            if (gameList.Items.Count != 0)
-            {
-                var selectedGame = _gameNames[gameList.SelectedIndex];
-
-                // open game compatibility page
-                if (selectedGame != null)
-                {
-                    path = "compatibility/" + Path.GetFileNameWithoutExtension(selectedGame.FileName) + ".htm";
-                }
-            }
-
-            var url = "https://teknogods.github.io/" + path;
-            Debug.WriteLine($"opening {url}");
-            Process.Start(url);
-        }
     }
 }

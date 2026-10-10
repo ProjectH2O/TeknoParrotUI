@@ -38,23 +38,13 @@ namespace TeknoParrotUi.Views
         }
 
         /// <summary>
-        /// When clicked, this will open the link for the discord invite
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PackIcon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Process.Start("https://discord.gg/bntkyXZ");
-        }
-
-        /// <summary>
-        /// When clicked, this will open the link to the github page for teknogods
+        /// When clicked, this will open the link to the ProjectH2O github page
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void PackIcon_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("https://github.com/teknogods/");
+            Process.Start("https://github.com/ProjectH2O");
         }
 
         private void Components_MouseDoubleClick(object sender, MouseButtonEventArgs e)
