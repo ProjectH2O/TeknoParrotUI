@@ -97,16 +97,6 @@ namespace TeknoParrotUi.Views
 
             _gameSettings.LoadNewSettings(profile, modifyItem, _contentControl, this);
             Joystick.LoadNewSettings(profile, modifyItem);
-            if (!profile.HasSeparateTestMode)
-            {
-                ChkTestMenu.IsChecked = false;
-                ChkTestMenu.IsEnabled = false;
-            }
-            else
-            {
-                ChkTestMenu.IsEnabled = true;
-                ChkTestMenu.ToolTip = Properties.Resources.LibraryToggleTestMode;
-            }
             var selectedGame = _gameNames[gameList.SelectedIndex];
             gameInfoText.Text = $"{Properties.Resources.LibraryEmulator}: {selectedGame.EmulatorType} ({(selectedGame.Is64Bit ? "x64" : "x86")})\n{(selectedGame.GameInfo == null ? Properties.Resources.LibraryNoInfo : selectedGame.GameInfo.ToString())}";
         }
@@ -534,11 +524,9 @@ namespace TeknoParrotUi.Views
                 JoystickHelper.Serialize();
             }
 
-            var testMenu = ChkTestMenu.IsChecked;
-
-            if (ValidateAndRun(gameProfile, out var loader, out var dll, false, this, testMenu))
+            if (ValidateAndRun(gameProfile, out var loader, out var dll, false, this, false))
             {
-                var gameRunning = new GameRunning(gameProfile, loader, dll, testMenu, false, false, this);
+                var gameRunning = new GameRunning(gameProfile, loader, dll, false, false, false, this);
                 Application.Current.Windows.OfType<MainWindow>().Single().contentControl.Content = gameRunning;
             }
         }
