@@ -23,7 +23,7 @@ namespace TeknoParrotUi
     public partial class App
     {
         private GameProfile _profile;
-        private bool _emuOnly, _test, _tpOnline, _startMin;
+        private bool _emuOnly, _test, _startMin;
         private bool _profileLaunch;
 
         public static bool Is64Bit()
@@ -48,10 +48,6 @@ namespace TeknoParrotUi
         private bool HandleArgs(string[] args)
         {
             _test = args.Any(x => x == "--test");
-            if (args.Contains("--tponline"))
-            {
-                _tpOnline = true;
-            }
 
             if (args.Contains("--startMinimized"))
             {
@@ -178,28 +174,24 @@ namespace TeknoParrotUi
             // Language code list: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/70feba9f-294e-491e-b6eb-56532684c37f
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR");
 
-            //this'll sort dumb stupid tp online gay shit
             HandleArgs(e.Args);
-            if (!_tpOnline)
+            if (Process.GetProcessesByName("TeknoParrotUi").Where((p) => p.Id != Process.GetCurrentProcess().Id)
+                .Count() > 0)
             {
-                if (Process.GetProcessesByName("TeknoParrotUi").Where((p) => p.Id != Process.GetCurrentProcess().Id)
-                    .Count() > 0)
+                if (MessageBoxHelper.ErrorYesNo(TeknoParrotUi.Properties.Resources.ErrorAlreadyRunning))
                 {
-                    if (MessageBoxHelper.ErrorYesNo(TeknoParrotUi.Properties.Resources.ErrorAlreadyRunning))
-                    {
-                        TerminateProcesses();
-                    }
-                    else
-                    {
-                        Current.Shutdown(0);
-                        return;
-                    }
+                    TerminateProcesses();
                 }
+                else
+                {
+                    Current.Shutdown(0);
+                    return;
+                }
+            }
 
-                if (Process.GetProcessesByName("vgc").Where((p) => p.Id != Process.GetCurrentProcess().Id).Count() > 0 || Process.GetProcessesByName("vgtray").Where((p) => p.Id != Process.GetCurrentProcess().Id).Count() > 0)
-                {
-                    MessageBoxHelper.WarningOK(TeknoParrotUi.Properties.Resources.VanguardDetected);
-                }
+            if (Process.GetProcessesByName("vgc").Where((p) => p.Id != Process.GetCurrentProcess().Id).Count() > 0 || Process.GetProcessesByName("vgtray").Where((p) => p.Id != Process.GetCurrentProcess().Id).Count() > 0)
+            {
+                MessageBoxHelper.WarningOK(TeknoParrotUi.Properties.Resources.VanguardDetected);
             }
 
             if (File.Exists("DumbJVSManager.exe"))

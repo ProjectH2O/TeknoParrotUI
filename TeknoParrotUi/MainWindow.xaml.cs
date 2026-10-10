@@ -25,7 +25,6 @@ namespace TeknoParrotUi
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static TeknoParrotOnline TpOnline = new TeknoParrotOnline();
         private readonly About _about = new About();
         private readonly Library _library;
         private readonly Patreon _patron = new Patreon();
@@ -381,11 +380,6 @@ namespace TeknoParrotUi
         private void BtnPatreon(object sender, RoutedEventArgs e)
         {
             contentControl.Content = _patron;
-        }
-
-        private void BtnTPOnline(object sender, RoutedEventArgs e)
-        {
-            contentControl.Content = TpOnline;
         }
 
         private void ColorZone_MouseDown(object sender, MouseButtonEventArgs e)

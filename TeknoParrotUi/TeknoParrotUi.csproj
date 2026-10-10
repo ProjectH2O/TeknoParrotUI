@@ -199,10 +199,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AvailCode\ListenThread.cs" />
-    <Compile Include="AvailCode\LobbyLib.cs" />
-    <Compile Include="AvailCode\LobbyList.cs" />
-    <Compile Include="AvailCode\TpNetState.cs" />
     <Compile Include="GameProfileLoader.cs" />
     <Compile Include="Helpers\WPFFolderBrowserInterop\comguids.cs" />
     <Compile Include="Helpers\WPFFolderBrowserInterop\errorhelper.cs" />
@@ -268,12 +264,6 @@
     </Compile>
     <Compile Include="Views\Patreon.xaml.cs">
       <DependentUpon>Patreon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TeknoParrotOnline.xaml.cs">
-      <DependentUpon>TeknoParrotOnline.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TPOnlineCreate.xaml.cs">
-      <DependentUpon>TPOnlineCreate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VerifyGame.xaml.cs">
       <DependentUpon>VerifyGame.xaml</DependentUpon>
@@ -347,14 +337,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Patreon.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TeknoParrotOnline.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TPOnlineCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
