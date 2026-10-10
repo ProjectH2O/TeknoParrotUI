@@ -530,27 +530,5 @@ namespace TeknoParrotUi.Views
                 Application.Current.Windows.OfType<MainWindow>().Single().contentControl.Content = gameRunning;
             }
         }
-
-        /// <summary>
-        /// This starts the MD5 verifier that checks whether a game is a clean dump
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnVerifyGame(object sender, RoutedEventArgs e)
-        {
-            if (gameList.Items.Count == 0)
-                return;
-
-            var selectedGame = _gameNames[gameList.SelectedIndex];
-            if (!File.Exists(selectedGame.ValidMd5))
-            {
-                MessageBoxHelper.InfoOK(Properties.Resources.LibraryNoHashes);
-            }
-            else
-            {
-                Application.Current.Windows.OfType<MainWindow>().Single().contentControl.Content =
-                    new VerifyGame(selectedGame.GamePath, selectedGame.ValidMd5);
-            }
-        }
     }
 }

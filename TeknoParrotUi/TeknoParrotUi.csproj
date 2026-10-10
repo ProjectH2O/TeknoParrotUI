@@ -245,9 +245,6 @@
     <Compile Include="Views\Library.xaml.cs">
       <DependentUpon>Library.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\VerifyGame.xaml.cs">
-      <DependentUpon>VerifyGame.xaml</DependentUpon>
-    </Compile>
     <Page Include="ViewModels\TextInputDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -296,10 +293,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\VerifyGame.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -333,9 +326,6 @@
     <None Include="app.manifest" />
     <None Include="FodyWeavers.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="MD5\*.md5">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

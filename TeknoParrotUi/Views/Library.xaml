@@ -17,9 +17,9 @@
             <RowDefinition Height="227*"/>
             <RowDefinition Height="162*"/>
             <RowDefinition Height="38*"/>
-            <RowDefinition Height="36*"/>
-            <RowDefinition Height="41*"/>
             <RowDefinition Height="38*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="39*"/>
             <RowDefinition Height="41*"/>
             <RowDefinition Height="38*"/>
             <RowDefinition Height="37*"/>
@@ -37,10 +37,9 @@
         <ScrollViewer Grid.Row="3" Grid.Column="1" Margin="10,0">
             <TextBlock x:Name="gameInfoText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{x:Static p:Resources.LibraryNoInfo}" Width="256" TextAlignment="Center" FontSize="14" Grid.Column="1" Grid.Row="3"/>
         </ScrollViewer>
-        <Button Content="{x:Static p:Resources.LibraryLaunchGame}" HorizontalAlignment="Left" Margin="9,3,0,1" Width="256" Click="BtnLaunchGame" Grid.Column="1" Grid.Row="4" Height="Auto"/>
-        <Button Content="{x:Static p:Resources.LibraryGameSettings}" HorizontalAlignment="Left" Margin="10,4,0,5" Width="256" Click="BtnGameSettings" Grid.Column="1" Grid.Row="5" Height="Auto"/>
-        <Button Content="{x:Static p:Resources.LibraryControllerSetup}" HorizontalAlignment="Left" Margin="10,0,0,6" Width="256" Click="BtnControllerSettings" Grid.Column="1" Grid.Row="6" Height="Auto"/>
-        <Button Content="{x:Static p:Resources.LibraryVerifyGame}" HorizontalAlignment="Left" Margin="10,3,0,3" Width="256" Click="BtnVerifyGame" Grid.Column="1" Grid.Row="7" Height="Auto" />
+        <Button Content="{x:Static p:Resources.LibraryLaunchGame}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Width="256" Height="32" Click="BtnLaunchGame" Grid.Column="1" Grid.Row="4"/>
+        <Button Content="{x:Static p:Resources.LibraryGameSettings}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Width="256" Height="32" Click="BtnGameSettings" Grid.Column="1" Grid.Row="5"/>
+        <Button Content="{x:Static p:Resources.LibraryControllerSetup}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Width="256" Height="32" Click="BtnControllerSettings" Grid.Column="1" Grid.Row="6"/>
 
     </Grid>
 </UserControl>
