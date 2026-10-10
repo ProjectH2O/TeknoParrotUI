@@ -39,8 +39,7 @@
                     <Button Content="{x:Static p:Resources.MainLibrary}" Margin="0,0,0,10"  Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="{x:Static Dock.Left}" Click="BtnLibrary"/>
                     <Button Content="{x:Static p:Resources.AddGame}" Margin="0,0,0,10" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="{x:Static Dock.Left}" Click="BtnAddGame"/>
                     <Button Content="{x:Static p:Resources.MainSettings}" Margin="0,0,0,10" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="{x:Static Dock.Left}" Click="BtnSettings" />
-                    <Button Content="Mods" Margin="0,0,0,10" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="{x:Static Dock.Left}" Click="BtnDebug" />
-                    <Button Content="{x:Static p:Resources.MainAbout}" Margin="0,0,0,296" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="{x:Static Dock.Left}" Click="BtnAbout"/>
+                    <Button Content="{x:Static p:Resources.MainAbout}" Margin="0,0,0,338" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="{x:Static Dock.Left}" Click="BtnAbout"/>
                     <Button Content="{x:Static p:Resources.MainQuit}" Margin="0,0,0,10" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="{x:Static Dock.Left}" Click="BtnQuit"/>
                 </StackPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>

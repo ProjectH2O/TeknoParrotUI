@@ -211,31 +211,15 @@
     <Compile Include="Helpers\MessageBoxHelper.cs" />
     <Compile Include="Helpers\ViewModelBase.cs" />
     <Compile Include="Helpers\WPFFolderBrowserDialog.cs" />
-    <Compile Include="Helpers\XDelta3.cs" />
     <Compile Include="JoystickHelper.cs" />
     <Compile Include="ViewModels\TextInputDialog.xaml.cs">
       <DependentUpon>TextInputDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ModControl.xaml.cs">
-      <DependentUpon>ModControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CreateMod.xaml.cs">
-      <DependentUpon>CreateMod.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ModMenu.xaml.cs">
-      <DependentUpon>ModMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddGame.xaml.cs">
       <DependentUpon>AddGame.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DebugJVS.xaml.cs">
       <DependentUpon>DebugJVS.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DownloadControl.xaml.cs">
-      <DependentUpon>DownloadControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DownloadWindow.xaml.cs">
-      <DependentUpon>DownloadWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmuBlacklist.cs" />
     <Compile Include="GameVersion.cs" />
@@ -268,31 +252,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ModControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CreateMod.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\ModMenu.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\AddGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DebugJVS.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DownloadControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\DownloadWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
